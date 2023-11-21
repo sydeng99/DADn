@@ -475,12 +475,8 @@ def train_loop(cfg, train_provider, valid_provider, model, optimizer, iters, wri
         swap_img_rc_sn = model['INNS'](x=torch.cat([F_real_content, N_s], dim = 1), rev=True)
         swap_img_sc_rn = model['INNR'](x=torch.cat([F_simu_content, N_r], dim = 1), rev=True)
 
-        if not 'ridnet' in cfg.MODEL.network:
-            noise_map_est_real, denoised_real = model['denoise'](swap_img_sc_rn)
-            noise_map_est_simu, denoised_simu = model['denoise'](rec_simu_img)
-        else:
-            denoised_real = model['denoise'](swap_img_sc_rn)
-            denoised_simu = model['denoise'](rec_simu_img)
+        noise_map_est_real, denoised_real = model['denoise'](swap_img_sc_rn)
+        noise_map_est_simu, denoised_simu = model['denoise'](rec_simu_img)
 
         loss_func = criterion_loss(cfg)
         loss_func2 = nn.MSELoss()
@@ -709,9 +705,8 @@ def train_loop(cfg, train_provider, valid_provider, model, optimizer, iters, wri
                 writer.add_image('valid/content_j/F_real_content', tensor2img(F_real_content[0,0]), iters, dataformats='HW')
                 writer.add_image('valid/content_j/rec_real_img', tensor2img(rec_real_img[0,0]), iters, dataformats='HW')
                 writer.add_image('valid/content_j/swap_img_rc_sn', tensor2img(swap_img_rc_sn[0,0]), iters, dataformats='HW')
-                if not 'ridnet' in cfg.MODEL.network:
-                    writer.add_image('valid/noise_map/noise_map_est_simu', tensor2img(noise_map_est_simu[0,0]), iters, dataformats='HW')
-                    writer.add_image('valid/noise_map/noise_map_est_real', tensor2img(noise_map_est_real[0,0]), iters, dataformats='HW')
+                writer.add_image('valid/noise_map/noise_map_est_simu', tensor2img(noise_map_est_simu[0,0]), iters, dataformats='HW')
+                writer.add_image('valid/noise_map/noise_map_est_real', tensor2img(noise_map_est_real[0,0]), iters, dataformats='HW')
 
         # save
         if (iters % cfg.TRAIN.save_freq == 0) & (iters>0):
