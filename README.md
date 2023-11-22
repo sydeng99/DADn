@@ -24,14 +24,9 @@ This repository is the **official implementation** of the paper, "Unsupervised D
 If you have a [Docker](https://www.docker.com/) environment, we strongly recommend you to pull our image as follows,
 
 ```
-docker pull registry.cn-hangzhou.aliyuncs.com/renwu527/auto-emseg:v5.4
+docker pull registry.cn-hangzhou.aliyuncs.com/em_seg/v54_higra:v11.1
 ```
 
-or
-
-```
-docker pull renwu527/auto-emseg:v5.4
-```
 
 
 
