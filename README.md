@@ -45,6 +45,10 @@ python main.py --cfg ./config/ours.yml
 
 ## Testing stage
 
+```python
+python test.py --cfg ./config/ours/yml
+```
+
 
 
 ## Visual Results
