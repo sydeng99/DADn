@@ -28,7 +28,9 @@ docker pull registry.cn-hangzhou.aliyuncs.com/em_seg/v54_higra:v11.1
 ```
 
 
+## Dataset
 
+RETINA dataset can be downloaded from both [Google Drive](https://drive.google.com/drive/folders/16koZx4Y4ImqExXcG-KZQkIlv2izv9cJJ?usp=sharing) and [Baidu Cloud Drive](https://pan.baidu.com/s/1-gmYIHUL-WtAtxRVxUi0eQ?pwd=USTC).
 
 ## Training stage
 
