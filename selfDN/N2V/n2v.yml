@@ -1,0 +1,49 @@
+NAME: 'n2v'
+
+TASK:
+  task_type: 'noise2void'
+  root_path: './'
+
+MODEL:
+  model_type: 'self-supervised'
+  network: 'n2v'
+  pre_train: False
+  num_gpu: 2
+  dist: False
+  trained_model_path: ''
+  trained_model_id: ''
+
+DATA:
+  data_dir: './dataset/'
+  dataset_noisy_name: 'trainset/noisy/'
+  train_patch_size: [256, 256]
+  if_RotateFlip_aug: True
+  if_spot_blind_network: True
+  ratio: 0.198
+  size_window: [7,7]
+  testset_clean_name: 'validset/clean/'
+  testset_noisy_name: 'validset/noisy/'
+  input_channel: 1
+
+TRAIN:
+  if_resume: False
+  if_multiGPU: False
+  if_cuda: True
+  batch_size: 4
+  num_workers: 4
+  random_seed: 666
+  save_path: './experiments/'
+  if_valid: True
+  base_lr: 0.0001
+  end_lr: 0.0001
+  loss_func: 'L1Loss'
+  lr_mode: 'customized'
+  total_iters: 200000
+  warmup_iters: 50000
+  decay_iters: 120000
+  power: 0.0005
+  weight_decay: ~
+
+  display_freq: 100
+  valid_freq: 1000
+  save_freq: 1000
