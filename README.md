@@ -68,3 +68,17 @@ python test.py --cfg ./config/ours/yml
 ## Contact
 
 If you have any problem with the released code, please do not hesitate to contact me by email ([sydeng@mail.ustc.edu.cn](mailto:sydeng@mail.ustc.edu.cn)).
+
+## Citation
+
+```
+@ARTICLE{10604846,
+  author={Deng, Shiyu and Chen, Yinda and Huang, Wei and Zhang, Ruobing and Xiong, Zhiwei},
+  journal={IEEE Transactions on Medical Imaging}, 
+  title={Unsupervised Domain Adaptation for EM Image Denoising with Invertible Networks}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/TMI.2024.3431192}}
+```
