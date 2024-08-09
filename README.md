@@ -34,6 +34,10 @@ docker pull renwu527/auto-emseg:v5.4
 ```
 
 
+## Dataset
+
+RETINA dataset can be downloaded from both [Google Drive](https://drive.google.com/drive/folders/16koZx4Y4ImqExXcG-KZQkIlv2izv9cJJ?usp=sharing) and [Baidu Cloud Drive](https://pan.baidu.com/s/1-gmYIHUL-WtAtxRVxUi0eQ?pwd=USTC).
+
 
 ## Training stage
 
