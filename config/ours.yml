@@ -1,0 +1,81 @@
+NAME: 'ours-DADn'
+
+TASK:
+  root_path: 'DADn/'
+
+MODEL:
+  network: 'DADn'
+  num_gpu: 2
+  dist: False    # distributed learning，not implement
+  trained_model_path: ''
+  trained_model_id: ''
+
+DATA:
+  paired: False
+  data_dir: 'DADn/dataset/'
+  dataset_clean_name: 'trainset/clean/'
+  dataset_noisy_name: 'trainset/noisy/'
+  train_patch_size: [192, 192]
+  noise_mode: 'S'
+  noise_level: 55
+  if_RotateFlip_aug: True
+  testset_clean_name: 'validset/clean/'
+  testset_noisy_name: 'validset/noisy/'
+  input_channel: 1
+
+TRAIN:
+  discri_input_channel:
+  inn_down_scale: 2
+  content_channel_split: 0.25
+  gaussianScale: 255
+  gradient_clipping: 10
+  if_resume: False
+  if_multiGPU: True
+  model_name: ['INNS', 'INNR', 'denoise', 'discri_content', 'discri_simu', 'discri_real']
+  semantic_model_path: 'DADn/semantic_model/checkpoint_339.pth'
+  resume_model_name:
+  if_cuda: True
+  batch_size: 2
+  num_workers: 4
+  random_seed: 3704
+  save_path: 'DADn/experiments/ours/'
+  if_valid: True
+  base_lr: 0.0001
+  end_lr: 0.0001
+  loss_func: 'L1Loss'
+  loss_weight: 1
+  lr_mode: 'customized'
+  total_iters: 200000
+  warmup_iters: 50000
+  decay_iters: 120000
+  power: 0.0005
+  weight_decay: ~
+
+  display_freq: 100
+  valid_freq: 500
+  save_freq: 500
+
+LOSS:
+  lambda_loss_recon_simu: 1
+  lambda_loss_recon_real: 1
+  lambda_loss_simu_lr_bicubic: 0.1
+  lambda_loss_real_lr_bicubic: 0.1
+  lambda_loss_denoised_simu: 1
+  lambda_loss_denoised_real: 1
+  lambda_loss_percep_sc: 0.05
+  lambda_loss_percep_rc: 0.05
+  lambda_loss_GAN_content: 0.2
+  lambda_loss_GAN_simu_noise: 0.2
+  lambda_loss_GAN_real_noise: 0.2
+
+  lambda_loss_D_content: 0.2
+  lambda_loss_D_simu_noise: 0.2
+  lambda_loss_D_real_noise: 0.2
+
+TEST:
+  trained_gpus: 2
+  testset_clean_name: 'testset/clean/'
+  testset_noisy_name: 'testset/noisy/'
+  model_path: '../model.pth'
+  model_names: ['INNS', 'INNR', 'denoise']
+  save_path: '../validset_output/'
